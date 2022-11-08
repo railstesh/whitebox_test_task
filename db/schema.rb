@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_133515) do
   create_table "tickets", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "priority"
+    t.string "priority"
     t.date "start_date"
     t.date "end_date"
     t.integer "status"

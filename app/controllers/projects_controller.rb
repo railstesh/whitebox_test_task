@@ -10,9 +10,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-
   def show
-    # byebug
     @project = Project.find(params[:id])
   end
 
@@ -20,15 +18,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-  
     @project = Project.new(project_params.merge(user_id: @user.id))
-    # @project = current_user.projects.find(params[:id])
-    # byebug
-      if @project.save
-        redirect_to user_project_path(@user, @project), notice: "Project was successfully created." 
-      else
-        render 'new'
-      end
+    if @project.save
+      redirect_to user_project_path(@user, @project), notice: "Project was successfully created." 
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -41,7 +36,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to user_projects_path 
+    redirect_to user_projects_path(@user, @project)
   end
 
   private

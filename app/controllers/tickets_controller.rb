@@ -15,8 +15,8 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    @ticket = Ticket.find(params[:id])
   end
-
 
   def create
     @ticket = Ticket.new(ticket_params.merge(project_id: @project.id))
@@ -35,23 +35,23 @@ class TicketsController < ApplicationController
     end
   end
 
-
   def destroy
+    @project = Project.find(params[:project_id])
     @ticket.destroy
-    redirect_to  project_tickets_path , notice: "ticket was successfully destroyed." 
+    redirect_to  project_tickets_path(@project, @ticket) , notice: "ticket was successfully destroyed." 
   end
 
   private
 
-    def get_project
+  def get_project
     @project = Project.find(params[:project_id])
-    end
+  end
 
-    def set_ticket
-      @ticket = Ticket.find_by(params[:id])
-    end
+  def set_ticket
+    @ticket = Ticket.find_by(params[:id])
+  end
 
-    def ticket_params
-      params.require(:ticket).permit(:title, :description, :priority, :start_date, :end_date, :status, :project_id)
-    end
+  def ticket_params
+    params.require(:ticket).permit(:title, :description, :priority, :start_date, :end_date, :status, :project_id)
+  end
 end

@@ -1,10 +1,9 @@
-<h1>Editing ticket</h1>
-
+<br><div class="col-md-2">
+<h3 style= "background-color:powderblue;">update Task</h3>
+</div>
 <%= render "form", ticket: @ticket %>
-
 <br>
-
 <div>
-  <%= link_to "Show this ticket", edit_project_ticket_path %> |
-  <%= link_to "Back to tickets", project_ticket_path %>
+  <%= link_to "Show  ticket", project_ticket_path, class:"btn btn-outline-primary"%> |
+  <%= link_to "Back tickets", project_tickets_path, class:"btn btn-outline-primary"%>
 </div>

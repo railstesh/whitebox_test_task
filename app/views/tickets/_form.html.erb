@@ -1,10 +1,10 @@
 <div class="container">
-<%= form_for @ticket, url: [:project, @ticket] do |form| %>
+<%# <%= form_for @ticket, url: [:project, @ticket] do |form| %> 
+<%= form_for [@project, @ticket] do |form| %>
   <% if ticket.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
-
-      <ul>
+       <ul>
         <% ticket.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -12,38 +12,44 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+ <div class="col-md-3">
+    <%= form.label :title %>
+    <%= form.text_field :title , class:"form-control"%>
+  </div>
+  
+  <div class="col-md-3">
+    <%= form.label :description%>
+    <%= form.text_field :description,class:"form-control" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="col-md-3">
+    <%= form.label :priority  %>
+     <%= form.select :priority, Ticket.priorities.map.to_s { [:working, 0] [:completed,1] } %>
+    <%= form.number_field :priority,class:"form-control" %>
   </div>
 
-  <div>
-    <%= form.label :priority, style: "display: block" %>
-    <%= form.number_field :priority %>
+  <div class="col-md-3">
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, class:"form-control"%>
   </div>
 
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+  <div class="col-md-3">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date ,class:"form-control" %>
   </div>
 
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
-  </div>
+  <div  class="col-md-3">
+    <%= form.label :status %>
+    <%# <%= form.select :project_id, Ticket.all.collect { |p| [ p.status, p.id ] }, include_blank: true %> 
+    <%= form.select :priority, Ticket.priorities.map.to_s { [:low, 0] [:high,1] } %>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
-  </div>
+    <%# <%= select_tag [:status], options_from_collection_for_select([:working], [:completed],["progress"]) %> 
+    <%= form.text_field :status ,class:"form-control" %> 
+  </div><br>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <p>
+    <%= form.submit class: "btn btn-info btn-sm"%>
+  </p>
 <% end %>
 </div>
+

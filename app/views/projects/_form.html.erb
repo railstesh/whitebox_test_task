@@ -1,9 +1,9 @@
 <div class="container">
-<%= form_for @project, url: [:user, @project] do |form| %>
+<%# <%= form_for @project, url: [:user, @project] do |form| %> 
+<%= form_for [@user, @project] do |form| %>
   <% if project.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
         <% project.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,17 +12,17 @@
     </div>
   <% end %>
   
-    <div class="col-md-3">
+  <div class="col-md-3">
     <%= form.label :title %><br>
     <%= form.text_field :title , class:"form-control"%>
-     </div>
+  </div>
 
   <div class="col-md-3">
     <%= form.label :description %><br>
     <%= form.text_field :description ,class:"form-control"%>
   </div>
 
-   <div class="col-md-3">
+  <div class="col-md-3">
     <%= form.label :start_date %><br>
     <%= form.date_field :start_date ,class:"form-control"%>
   </div>
@@ -35,11 +35,11 @@
   <div class="col-md-3">
     <%= form.label :status %><br>
     <%= form.text_field :status,class:"form-control" %>
-  </div>
+  </div><br>
 
   <p>
     <%= form.submit class: "btn btn-info btn-sm"%>
   </p>
-
-<% end %>
 </div>
+<% end %>
+

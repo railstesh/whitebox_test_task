@@ -4,4 +4,5 @@ class Ticket < ApplicationRecord
 
   enum status: [:intial_stage, :working, :completed]
   enum priority: [:small,:medium]
+ 
 end

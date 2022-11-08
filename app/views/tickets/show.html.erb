@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @ticket %>
-
-<div>
-  <%= link_to "Edit this ticket", edit_project_ticket_path(@ticket) %> |
-  <%= link_to "Back to tickets", project_tickets_path %>
-
-  <%= button_to "Destroy this ticket", project_tickets_path, method: :delete %>
+<br>
+<div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
+<div class="card-header">
+Task
 </div>
+ <u1 class="card-title">
+ <li class="list-group-item">Title:<br>
+ <%= @ticket.title %></li>
+ 
+ <li class="list-group-item">description:<br>
+ <%= @ticket.description %></li>
+ <li class="list-group-item">priority:<br>
+ <%= @ticket.priority %></li>
+ <li class="list-group-item">start_date:<br>
+ <%= @ticket.start_date %></li>
+ <li class="list-group-item">end_date:<br>
+ <%= @ticket.end_date %></li>
+ <li class="list-group-item">status:<br>
+ <%= @ticket.status %></li>
+ </u1>
+  <%= link_to "Edit Task", edit_project_ticket_path(@project, @ticket) ,class:"btn btn-outline-primary"%>
+  <%= link_to "Back Task", project_tickets_path ,class:"btn btn-outline-primary"%> 
+<div>

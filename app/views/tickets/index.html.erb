@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Tickets</h1>
-
-<div id="tickets">
-  <% @tickets.each do |ticket| %>
-    <%= render ticket %>
-    <p>
-      <%= link_to "Show this ticket", project_tickets_path %>
-    </p>
-  <% end %>
+<br><%= link_to "New Task", new_project_ticket_path ,class:"btn btn-outline-primary"%>
+<div class="container"><br>
+<div class="col-md-2">
+  <h3 style= "background-color:powderblue;">Task</h3><br>
 </div>
-
-<%= link_to "New ticket", new_project_ticket_path %>
+<div class="col-md-10">
+  <table class="table table-bordered table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>priority</th>
+    <th>start_date</th>
+    <th>end_date</th>
+    <th>status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<%  @tickets.each do |ticket| %>
+  <tr>
+  <% if current_user.roles == "admin" ||  ticket.project_id == current_user.id %>
+    <td><%= ticket.title %></td>
+    <td><%= ticket.description%></td>
+    <td><%= ticket.priority%></td>
+    <td><%= ticket.start_date%></td>
+    <td><%= ticket.end_date %></td>
+    <td><%= ticket.status %></td>
+    <td><%= link_to "Edit ", edit_project_ticket_path(@project, ticket) ,class:"btn btn-outline-primary"%><td>
+    <td><%= link_to "Show ",project_ticket_path(@project, ticket) ,class:"btn btn-outline-primary"%><td>
+    <td><%= link_to "delete",project_tickets_path(@project, ticket),method: :delete, data: {confirm: 'Are you sure'} ,class:"btn btn-outline-primary"%><td>
+  </tr>
+  <% end %>   
+<% end %>
+</div>
+</div>
