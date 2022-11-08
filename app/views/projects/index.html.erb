@@ -1,35 +1,38 @@
 <div class="container"><br>
-<div class="col-md-2">
-  <h1>Projects</h1><br>
-</div>
-<div class="col-md-10">
-  <table class="table table-bordered table-striped table-hover">
-<tr>
-  <th>Title</th>
-  <th>Description</th>
-  <th>start_date</th>
-  <th>end_date</th>
-  <th>status</th>
-  <th><th>
-  <th>Action<th>
-  <th></th>
-  <th></th>
-</tr>
-<%  @projects.each do |project| %>
-  <tr>
-  <% if current_user.roles == "admin" ||  project.user_id == current_user.id %>
-    <td><%= project.title %></td>
-    <td><%= project.description%></td>
-    <td><%= project.start_date%></td>
-    <td><%= project.end_date %></td>
-    <td><%= project.status%></td>
-    <td><%= link_to "Edit ", edit_user_project_path(current_user, @project) ,class:"btn btn-outline-primary"%><td>
-    <td><%= link_to "Show ",user_project_path(current_user, project) ,class:"btn btn-outline-primary"%><td>
-    <td><%= button_to "delete",user_project_path(current_user, @project), method: :delete, class:"btn btn-outline-primary"%></td>
-    <td><%= link_to "Show taks",project_tickets_path(project) ,class:"btn btn-outline-primary"%><td>
-  </tr>
-  <% end %>   
-<% end %>
-</div>
+  <div class="col-md-2">
+    <h1>Projects</h1>
+    <%= link_to "New ",new_user_project_path(current_user) ,class:"btn btn-outline-primary"%>
+  </div><br>
+  <div>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-bordered table-striped table-hover">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>start_date</th>
+      <th>end_date</th>
+      <th>status</th>
+      <th><th>
+      <th>Action<th>
+      <th></th>
+      <th></th>
+    </tr>
+    <%  @projects.each do |project| %>
+      <tr>
+      <% if current_user.role == "admin" ||  project.user_id == current_user.id %>
+        <td><%= project.title %></td>
+        <td><%= project.description%></td>
+        <td><%= project.start_date%></td>
+        <td><%= project.end_date %></td>
+        <td><%= project.status%></td>
+        <td><%= link_to "Edit ", edit_user_project_path(current_user, @project) ,class:"btn btn-outline-primary"%><td>
+        <td><%= link_to "Show ",user_project_path(current_user, project) ,class:"btn btn-outline-primary"%><td>
+        <td><%= button_to "delete",user_project_path(current_user, @project), method: :delete, class:"btn btn-outline-primary"%></td>
+        <td><%= link_to "Show taks",project_tickets_path(project) ,class:"btn btn-outline-primary"%><td>
+      </tr>
+      <% end %>   
+    <% end %>
+  </div>
 </div>
 

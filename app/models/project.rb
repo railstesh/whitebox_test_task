@@ -1,9 +1,7 @@
 class Project < ApplicationRecord
-  validates :description, :title, :start_date, :end_date, presence: true
-  
+  has_many :tickets
   belongs_to :user
 
-  has_many :tickets
-
-  enum status: [:intial_stage, :working, :completed]
+  validates :description, :title, :start_date, :end_date, presence: true 
+  enum status: [:working, :completed]
 end

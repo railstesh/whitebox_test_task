@@ -3,6 +3,6 @@
 </div>
 <%= render "form", project: @project %><br>
 <div>
-  <%= link_to "Show  project",  user_project_path(@user, @project),class:"btn btn-outline-primary"%>
-  <%= link_to "Back to projects", user_projects_path ,class:"btn btn-outline-primary"%></button>
+  <%= link_to "Show  project",  user_project_path(current_user, @project),class:"btn btn-outline-primary"%>
+  <%= link_to "Back to projects", user_projects_path(current_user) ,class:"btn btn-outline-primary"%></button>
 </div>
