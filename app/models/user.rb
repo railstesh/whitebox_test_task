@@ -4,12 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  enum roles: [:user, :admin]
+  enum role: [:user, :admin]
 
-  has_many :projects , dependent: :destroy
-  
-  after_initialize :set_default_role
-   def set_default_role
-     self.roles ||= :user
-   end
+  has_many :projects
 end

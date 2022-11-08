@@ -1,6 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[ show edit update destroy create]
-
+  before_action :set_ticket
   before_action :get_project
 
   def new
@@ -36,9 +35,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @ticket.destroy
-    redirect_to  project_tickets_path(@project, @ticket) , notice: "ticket was successfully destroyed." 
+    redirect_to  project_tickets_path(@project) , notice: "ticket was successfully destroyed."
   end
 
   private

@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :set_project
-  before_action :get_user
 
   def new
     @project = Project.new
@@ -15,20 +14,21 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
-    @project = Project.new(project_params.merge(user_id: @user.id))
+    @project = Project.new(project_params.merge(user_id: current_user.id))
     if @project.save
-      redirect_to user_project_path(@user, @project), notice: "Project was successfully created." 
+      redirect_to user_project_path(current_user, @project), notice: "Project was successfully created." 
     else
       render 'new'
     end
   end
 
   def update
-    if @project.update(project_params.merge(user_id: @user.id))
-      redirect_to user_projects_path(@user, @project) , notice: "Project was successfully updated." 
+    if @project.update(project_params.merge(user_id: current_user.id))
+      redirect_to user_projects_path(current_user, @project) , notice: "Project was successfully updated." 
     else
       render 'edit'
     end
@@ -36,14 +36,10 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to user_projects_path(@user, @project)
+    redirect_to user_projects_path(current_user)
   end
 
   private
-   
-  def get_user
-    @user= User.find(params[:user_id])
-  end
     
   def set_project
     @project = Project.find_by(params[:id])
@@ -52,5 +48,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :description, :start_date, :end_date, :status, :user_id)
   end
-
 end

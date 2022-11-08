@@ -3,7 +3,7 @@ class CreateTickets < ActiveRecord::Migration[7.0]
     create_table :tickets do |t|
       t.string :title
       t.string :description
-      t.string :priority
+      t.integer :priority
       t.date :start_date
       t.date :end_date
       t.integer :status

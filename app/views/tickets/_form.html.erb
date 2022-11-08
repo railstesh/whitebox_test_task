@@ -15,36 +15,31 @@
  <div class="col-md-3">
     <%= form.label :title %>
     <%= form.text_field :title , class:"form-control"%>
-  </div>
+  </div><br>
   
   <div class="col-md-3">
     <%= form.label :description%>
     <%= form.text_field :description,class:"form-control" %>
-  </div>
+  </div><br>
 
   <div class="col-md-3">
     <%= form.label :priority  %>
-     <%= form.select :priority, Ticket.priorities.map.to_s { [:working, 0] [:completed,1] } %>
-    <%= form.number_field :priority,class:"form-control" %>
-  </div>
+     <%= form.select :priority, [:low, :medium, :high] %>
+  </div><br>
 
   <div class="col-md-3">
     <%= form.label :start_date%>
     <%= form.date_field :start_date, class:"form-control"%>
-  </div>
+  </div><br>
 
   <div class="col-md-3">
     <%= form.label :end_date %>
     <%= form.date_field :end_date ,class:"form-control" %>
-  </div>
+  </div><br>
 
   <div  class="col-md-3">
     <%= form.label :status %>
-    <%# <%= form.select :project_id, Ticket.all.collect { |p| [ p.status, p.id ] }, include_blank: true %> 
-    <%= form.select :priority, Ticket.priorities.map.to_s { [:low, 0] [:high,1] } %>
-
-    <%# <%= select_tag [:status], options_from_collection_for_select([:working], [:completed],["progress"]) %> 
-    <%= form.text_field :status ,class:"form-control" %> 
+    <%= form.select :status, [:intial_stage, :working, :completed] %>
   </div><br>
 
   <p>
