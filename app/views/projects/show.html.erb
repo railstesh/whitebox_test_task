@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @project %>
-
-<div>
-  <%= link_to "Edit this project", edit_user_project_path(@project) %> |
-  <%= link_to "Back to projects", user_projects_path %>
-
-  <%= button_to "Destroy this project", user_projects_path, method: :delete %>
-</div>
+<br>
+<div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
+<div class="card-header">
+ Project
+ </div>
+ <u1 class="card-title">
+ <li class="list-group-item">Title:<br>
+ <%= @project.title %></li>
+ <li class="list-group-item">description:<br>
+ <%= @project.description%></li>
+ <li class="list-group-item">start_date:<br>
+ <%= @project.start_date%></li>
+ <li class="list-group-item">end_date:<br>
+ <%= @project.end_date%></li>
+ <li class="list-group-item">status:<br>
+ <%= @project.status%></li>
+ </u1>
+  <%= link_to "Edit project", edit_user_project_path(@project) ,class:"btn btn-outline-primary"%>
+  <%= link_to "Back projects", user_projects_path ,class:"btn btn-outline-primary"%> 
+ <div>

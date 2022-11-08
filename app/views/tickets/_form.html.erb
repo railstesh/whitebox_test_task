@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for @ticket, url: [:project, @ticket] do |form| %>
   <% if ticket.errors.any? %>
     <div style="color: red">
@@ -45,3 +46,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

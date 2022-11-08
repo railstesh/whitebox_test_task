@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum roles: [:user, :admin]
 
   has_many :projects , dependent: :destroy
+  
   after_initialize :set_default_role
    def set_default_role
     self.roles ||= :user

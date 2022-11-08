@@ -1,12 +1,12 @@
-<h1>sign up</h1>
+<%# <h1>sign up</h1>
 <% if current_user %>
-<p>hello <%= current_user.email %></p>
-<p> you have suceesfully signup </p>
-<p> you are a <%= current_user.roles %></p>
-<%= link_to "sign_out", destroy_user_session_path, 'data-turbo-method': :delete %>
-<% else %>
-<p> you are not signed in </p><br>
-<%= link_to 'sign up',  new_user_registration_path %><br>
-<br>
-<%= link_to 'log in', new_user_session_path %>
-<% end %>
+<%# <p>hello <%= current_user.email %> 
+<%# <p> you have suceesfully signup </p>
+<p> you are a <%= current_user.roles %>
+<%# <%= link_to "sign_out", destroy_user_session_path, 'data-turbo-method': :delete %>
+<%# <% else %>
+<%# <p> you are not signed in </p><br> %>
+<%# <%= link_to 'sign up',  new_user_registration_path %>
+<%# <br> %>
+<%# <%= link_to 'log in', new_user_session_path %> 
+<%# <% end %>

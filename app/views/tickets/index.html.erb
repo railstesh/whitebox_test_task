@@ -6,7 +6,7 @@
   <% @tickets.each do |ticket| %>
     <%= render ticket %>
     <p>
-      <%= link_to "Show this ticket",  project_ticket_path(@project, @ticket)%>
+      <%= link_to "Show this ticket", project_tickets_path %>
     </p>
   <% end %>
 </div>
