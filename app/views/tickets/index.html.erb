@@ -1,13 +1,13 @@
-<br><%= link_to "New Task", new_project_ticket_path ,class:"btn btn-outline-primary"%>
 <div class="container"><br>
-  <div class="col-md-2">
+  <div class="col-md-12">
     <h1>Task</h1><br>
+      <div><%= link_to "New Task", new_project_ticket_path ,class:"btn btn-outline-primary"%></div>
   </div>
   <% if @project.tickets.count < 1 %>
     <h2>You don't have tasks as of now</h2>
   <% else%>
     <div class="col-md-10">
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-striped table-hover"><br>
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -17,7 +17,7 @@
       <th>status</th>
       <th></th>
       <th></th>
-      <th></th>
+      <th>Action</th>
       <th></th>
       <th></th>
       <th></th>

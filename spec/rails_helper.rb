@@ -1,5 +1,20 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
+# This file is copied to spec/ when you run 'rails generate rspec:install
+# require 'test_helper'
+require 'shoulda/matchers'
 require 'spec_helper'
+require 'rails_helper'
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+
+   # This require statement solves the uninitialized constant / NameError issue
+    require "active_record" 
+    with.library :active_record
+    with.library :active_model
+  end
+end
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production

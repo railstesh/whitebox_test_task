@@ -1,26 +1,18 @@
 require 'rails_helper'
 RSpec.describe Project, type: :model do
-  it "title should be present " do
-    @project = Project.new
-    @project.title = nil
-    expect(@project).to_not be_valid
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:start_date) }
+    it { is_expected.to validate_presence_of(:end_date) }
   end
 
-  it "description should be present " do
-    @project = Project.new
-    @project.description = nil
-    expect(@project).to_not be_valid
+  describe 'Association' do
+    it { should have_many(:tickets)}
+    it { should belong_to(:user)}
   end
 
-  it "start_date should be present " do
-    @project = Project.new
-    @project.start_date= nil
-    expect(@project).to_not be_valid
-  end
-
-  it "end_date should be present " do
-    @project = Project.new
-    @project.end_date= nil
-    expect(@project).to_not be_valid
+  describe 'Enum' do
+    it { should define_enum_for(:status).with([:working, :completed]) }
   end
 end
